@@ -1,0 +1,112 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --font-sans: "Figtree Variable", "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Newsreader Variable", "Newsreader", "Iowan Old Style", Palatino, Georgia, serif;
+
+  --color-bg: #0e0f0d;
+  --color-fg: #ece9e1;
+  --color-surface: #171814;
+  --color-surface-2: #1e1f1c;
+  --color-muted: #9a968c;
+  --color-subtle: #6f6c64;
+  --color-border: rgb(236 233 225 / 0.1);
+  --color-accent: #c5c9c0;
+  --color-accent-fg: #0e0f0d;
+  --color-benefic: #8a9a82;
+  --color-malefic: #b0877a;
+  --color-mixed: #a8a49a;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+
+  --shadow-border: 0 0 0 1px rgb(236 233 225 / 0.08);
+  --shadow-border-hover: 0 0 0 1px rgb(236 233 225 / 0.14);
+}
+
+:root {
+  --motion-stagger: 40ms;
+  --motion-micro: 80ms;
+  --motion-quick: 150ms;
+  --motion-fast: 250ms;
+  --motion-medium: 350ms;
+  --motion-slow: 400ms;
+  --ease-smooth-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --motion-y-base: 8px;
+  --motion-scale-modal: 0.96;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--color-bg);
+    color: var(--color-fg);
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    min-height: 100dvh;
+    /* Keep content clear of notches / status bar when installed as an app. */
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+      env(safe-area-inset-left);
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: none;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator,
+  input[type="time"]::-webkit-calendar-picker-indicator {
+    opacity: 0.45;
+    cursor: pointer;
+    filter: invert(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+}
+
+.starfield {
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(1px 1px at 12% 18%, rgb(236 233 225 / 0.22), transparent),
+    radial-gradient(1px 1px at 78% 12%, rgb(236 233 225 / 0.16), transparent),
+    radial-gradient(1.5px 1.5px at 64% 36%, rgb(236 233 225 / 0.12), transparent),
+    radial-gradient(1px 1px at 28% 64%, rgb(236 233 225 / 0.14), transparent),
+    radial-gradient(1px 1px at 88% 72%, rgb(236 233 225 / 0.1), transparent),
+    radial-gradient(1px 1px at 8% 88%, rgb(236 233 225 / 0.12), transparent),
+    linear-gradient(180deg, rgb(236 233 225 / 0.03), transparent 28%);
+}
